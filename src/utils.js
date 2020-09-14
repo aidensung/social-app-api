@@ -1,10 +1,7 @@
-import dotenv from 'dotenv';
-import path from 'path';
-dotenv.config({ path: path.resolve(__dirname, '.env') });
-
 import { adjectives, nouns } from './words';
 import nodemailer from 'nodemailer';
 import sgTransport from 'nodemailer-sendgrid-transport';
+import jwt from 'jsonwebtoken';
 
 export const generateSecret = () => {
   const randomNumber1 = Math.floor(Math.random() * adjectives.length);
@@ -34,7 +31,9 @@ export const sendSecretEmail = (address, secret) => {
     from: process.env.SENDER_EMAIL,
     to: address,
     subject: '🔒Login Secret for LikeLikes🔒',
-    html: `Hello! Your login secret is ${secret}.<br/>Copy & Paste it on the app/website to log in.`,
+    html: `Hello! Your login secret is <h2>${secret}</h2>Copy & paste it on the app/website to log in.`,
   };
   return sendEmail(email);
 };
+
+export const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET);
