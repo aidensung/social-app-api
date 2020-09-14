@@ -9,8 +9,8 @@ Social networking app with GraphQL, Prisma, React, and React Native
 - [x] Confirm Secret (Login)
 - [x] Like / Unlike a photo
 - [x] Comment on a photo
-- [x] Search by user
-- [ ] Search by location
+- [x] Search for users
+- [x] Search for posts by location, caption
 - [ ] See user profile
 - [ ] Follow / Unfollow User
 - [ ] See the full photo
