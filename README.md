@@ -13,7 +13,7 @@ Social networking app with GraphQL, Prisma, React, and React Native
 - [x] Search for posts by location, caption
 - [x] Follow User
 - [x] Unfollow User
-- [ ] Edit my profile
+- [x] Edit my profile
 - [ ] See user profile
 - [ ] See the full photo
 - [ ] Upload a photo
