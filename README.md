@@ -16,7 +16,7 @@ Social networking app with GraphQL, Prisma, React, and React Native
 - [x] Edit my profile
 - [x] View user profile
 - [x] View my profile
-- [ ] View the full photo
+- [x] View the full post
 - [ ] Upload a photo
 - [ ] Edit the photo (Delete)
 - [ ] View the feed
