@@ -1,4 +1,5 @@
 import { prisma } from '../../../../generated/prisma-client';
+import { FULL_POST_FRAGMENT } from '../../../fragments';
 
 export default {
   Query: {
@@ -6,14 +7,16 @@ export default {
       isAuthenticated(request);
       const { user } = request;
       const following = await prisma.user({ id: user.id }).following();
-      return prisma.posts({
-        where: {
-          user: {
-            id_in: [...following.map((user) => user.id), user.id],
+      return prisma
+        .posts({
+          where: {
+            user: {
+              id_in: [...following.map((user) => user.id), user.id],
+            },
           },
-        },
-        orderBy: 'createdAt_DESC',
-      });
+          orderBy: 'createdAt_DESC',
+        })
+        .$fragment(FULL_POST_FRAGMENT);
     },
   },
 };

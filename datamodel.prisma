@@ -23,7 +23,7 @@ type Post {
   user: User @relation(name:"PostsOfUser")
   files: [File!]! @relation(name: "FilesOfPost" onDelete: CASCADE)
   likes: [Like!]! @relation(name: "LikesOfPost" onDelete: CASCADE)
-  comments: [Comment!]! @relation(name: "CommentsfPost" onDelete: CASCADE)
+  comments: [Comment!]! @relation(name: "CommentsOfPost" onDelete: CASCADE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -40,7 +40,7 @@ type Comment {
   id: ID! @id
   text: String!
   user: User @relation(name:"CommentsOfUser")
-  post: Post @relation(name: "CommentsfPost")
+  post: Post @relation(name: "CommentsOfPost")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -56,7 +56,7 @@ type File {
 type Room {
   id: ID! @id
   participants: [User] @relation(name:"RoomsOfUser")
-  messages: [Message!]!
+  messages: [Message!]! @relation(name: "MessagesOfRoom" onDelete: CASCADE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -66,7 +66,7 @@ type Message {
   text: String!
   from: User! @relation(name: "From")
   to: User! @relation(name: "To")
-  room: Room!
+  room: Room @relation(name: "MessagesOfRoom")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

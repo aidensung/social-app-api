@@ -20,7 +20,7 @@ Social networking app with GraphQL, Prisma, React, and React Native
 - [x] Upload a post
 - [x] Edit the post (Delete)
 - [x] View the feed
-- [ ] View rooms
+- [x] View rooms
+- [x] Send message
 - [ ] View room
-- [ ] Send private message
 - [ ] Receive message (Realtime)
