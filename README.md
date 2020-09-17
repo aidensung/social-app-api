@@ -17,6 +17,10 @@ Social networking app with GraphQL, Prisma, React, and React Native
 - [x] View user profile
 - [x] View my profile
 - [x] View the full post
-- [ ] Upload a post
+- [x] Upload a post
 - [ ] Edit the post (Delete)
 - [ ] View the feed
+- [ ] View rooms
+- [ ] View room
+- [ ] Send private message
+- [ ] Receive message (Realtime)
