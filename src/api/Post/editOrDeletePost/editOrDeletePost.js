@@ -5,7 +5,7 @@ const EDIT = 'EDIT';
 
 export default {
   Mutation: {
-    editAndDeletePost: async (_, args, { request, isAuthenticated }) => {
+    editOrDeletePost: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { id, caption, location, action } = args;
       const { user } = request;
