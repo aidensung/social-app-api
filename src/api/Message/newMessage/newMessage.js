@@ -1,5 +1,4 @@
 import { prisma } from '../../../../generated/prisma-client';
-import { MESSAGE_FRAGMENT } from '../../../fragments';
 
 export default {
   Subscription: {
