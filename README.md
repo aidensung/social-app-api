@@ -22,5 +22,5 @@ Social networking app with GraphQL, Prisma, React, and React Native
 - [x] View the feed
 - [x] View rooms
 - [x] Send message
-- [ ] View room
-- [ ] Receive message (Realtime)
+- [x] View room
+- [x] Receive message (Realtime)

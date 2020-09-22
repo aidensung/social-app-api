@@ -10,33 +10,26 @@ export default {
       let room;
 
       if (roomId === undefined) {
-        if (
-          !(await prisma.$exists.room({
-            participants_some: {
-              id_in: [toId, user.id],
-            },
-          })) &&
-          user.id !== toId
-        ) {
-          room = await prisma
-            .createRoom({
-              participants: {
-                connect: [
-                  {
-                    id: toId,
-                  },
-                  { id: user.id },
-                ],
-              },
-            })
-            .$fragment(ROOM_FRAGMENT);
-        } else if (user.id !== toId) {
+        const isExisting = await prisma.$exists.room({
+          participants_every: {
+            id_in: [toId, user.id],
+          },
+        });
+        if (!isExisting) {
+          if (user.id !== toId) {
+            room = await prisma
+              .createRoom({
+                participants: {
+                  connect: [{ id: toId }, { id: user.id }],
+                },
+              })
+              .$fragment(ROOM_FRAGMENT);
+          }
+        } else {
           const roomArray = await prisma
             .rooms({
               where: {
-                participants_some: {
-                  id_in: [toId, user.id],
-                },
+                participants_every: { id_in: [toId, user.id] },
               },
             })
             .$fragment(ROOM_FRAGMENT);
@@ -48,7 +41,6 @@ export default {
       if (!room) {
         throw Error('Room not found');
       }
-      console.log(room);
       const getTo = room.participants.filter((participant) => participant.id !== user.id)[0];
       return prisma.createMessage({
         text,

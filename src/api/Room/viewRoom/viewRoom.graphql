@@ -1,0 +1,3 @@
+type Query {
+  viewRoom(id: String!): Room!
+}
