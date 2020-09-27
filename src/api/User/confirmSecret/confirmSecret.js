@@ -15,7 +15,7 @@ export default {
         });
         return generateToken(user.id);
       } else {
-        throw Error('Wrong email/secret combination');
+        throw Error('Wrong email / secret combination');
       }
     },
   },
